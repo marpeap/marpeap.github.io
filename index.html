@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genius Strategy Maker for Waze</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Genius Strategy Maker for Waze</h1>
+            <p class="subtitle">Optimisation avancée de portefeuille SolX avec intelligence algorithmique</p>
+        </header>
+        
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-chart-line"></i>
+                <h2>Paramètres de Position</h2>
+            </div>
+            
+            <div class="input-group">
+                <label for="solxAmount"><i class="fas fa-coins"></i> SolX détenus</label>
+                <input type="number" id="solxAmount" min="0" value="380498">
+            </div>
+            
+            <div class="input-group">
+                <label for="currentPrice"><i class="fas fa-dollar-sign"></i> Prix actuel du SOLX ($)</label>
+                <input type="number" id="currentPrice" step="0.000001" min="0" value="0.00062">
+            </div>
+            
+            <div class="market-indicators">
+                <div class="indicator">
+                    <div class="indicator-label">Volatilité</div>
+                    <div class="indicator-value">Modérée</div>
+                    <div class="performance-gauge">
+                        <div class="gauge-fill" style="width: 60%"></div>
+                    </div>
+                </div>
+                <div class="indicator">
+                    <div class="indicator-label">Tendance</div>
+                    <div class="indicator-value">Haussière</div>
+                    <div class="performance-gauge">
+                        <div class="gauge-fill" style="width: 75%"></div>
+                    </div>
+                </div>
+                <div class="indicator">
+                    <div class="indicator-label">RSI</div>
+                    <div class="indicator-value">54.3</div>
+                    <div class="performance-gauge">
+                        <div class="gauge-fill" style="width: 54%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="simulation-controls">
+                <button id="simulateGrowth">
+                    <i class="fas fa-arrow-trend-up"></i> Simuler Croissance
+                </button>
+                <button id="simulateDecline">
+                    <i class="fas fa-arrow-trend-down"></i> Simuler Baisse
+                </button>
+            </div>
+            
+            <div class="time-machine">
+                <button id="prevScenario"><i class="fas fa-chevron-left"></i></button>
+                <span>Scénario actuel: <span class="highlight" id="scenarioDisplay">Base</span></span>
+                <button id="nextScenario"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-bullseye"></i>
+                <h2>Objectifs Stratégiques</h2>
+            </div>
+            
+            <div class="price-targets" id="priceTargets">
+                <!-- Les objectifs seront générés dynamiquement -->
+            </div>
+            
+            <div class="input-group">
+                <label for="customTarget"><i class="fas fa-sliders-h"></i> Objectif personnalisé ($)</label>
+                <input type="number" id="customTarget" step="0.000001" min="0" placeholder="0.000000">
+            </div>
+            
+            <div class="price-history-chart">
+                <div class="chart-grid"></div>
+                <svg class="chart-line" id="priceChart"></svg>
+            </div>
+            
+            <button id="analyzeBtn">
+                <i class="fas fa-brain"></i> Générer la Stratégie
+            </button>
+        </div>
+        
+        <div class="card full-width">
+            <div class="card-title">
+                <i class="fas fa-chess-queen"></i>
+                <h2>Stratégie de Trading Avancée</h2>
+            </div>
+            
+            <div id="positionInfo">
+                <div class="value-display">
+                    <span>SOLX détenus :</span>
+                    <span class="highlight" id="holdingsDisplay">380,498</span>
+                </div>
+                <div class="value-display">
+                    <span>Valeur actuelle :</span>
+                    <span class="highlight" id="currentValue">$235.91</span>
+                </div>
+                <div class="value-display">
+                    <span>Valeur à l'objectif :</span>
+                    <span class="highlight" id="targetValue">$0.00</span>
+                </div>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-header">
+                    <h3>Progression vers l'objectif</h3>
+                    <span id="progressPercent">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                    <div class="progress-text" id="progressText">0%</div>
+                </div>
+            </div>
+            
+            <div id="recommendation">
+                <div class="advice-container">
+                    <h3><i class="fas fa-lightbulb"></i> Analyse de Position</h3>
+                    <p>Sélectionnez un prix cible et cliquez sur "Générer la Stratégie" pour obtenir une analyse complète et des recommandations personnalisées pour votre portefeuille SolX.</p>
+                </div>
+            </div>
+            
+            <div class="strategy-grid">
+                <div class="strategy-card">
+                    <h4><i class="fas fa-shield-alt"></i> Stratégie Défensive</h4>
+                    <p>Protégez votre capital avec des ordres stop-loss et des prises de bénéfices partielles. Idéal pour les marchés volatils.</p>
+                    <ul class="advice-list">
+                        <li>Placez un stop-loss à 15% sous le prix actuel</li>
+                        <li>Vendez par tranches de 10% à chaque palier de +25%</li>
+                        <li>Conservez 50% du portefeuille à long terme</li>
+                    </ul>
+                </div>
+                
+                <div class="strategy-card">
+                    <h4><i class="fas fa-chart-line"></i> Stratégie Dynamique</h4>
+                    <p>Adaptez votre position aux conditions du marché avec des objectifs flexibles basés sur les indicateurs techniques.</p>
+                    <ul class="advice-list">
+                        <li>Ajustez les objectifs selon le RSI et les volumes</li>
+                        <li>Augmentez les ventes lorsque la volatilité est élevée</li>
+                        <li>Utilisez des ordres à cours limité pour optimiser les gains</li>
+                    </ul>
+                </div>
+                
+                <div class="strategy-card">
+                    <h4><i class="fas fa-rocket"></i> Stratégie Aggressive</h4>
+                    <p>Maximisez les gains potentiels en visant des objectifs ambitieux avec une tolérance au risque élevée.</p>
+                    <ul class="advice-list">
+                        <li>Ciblez des gains de +300% à +500%</li>
+                        <li>Conservez 100% de la position jusqu'à l'objectif principal</li>
+                        <li>Utilisez une partie des bénéfices pour renforcer la position</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="signature">
+            <p>Conçu avec précision pour Waze par Marpeap | Système de stratégie Genius v0.2</p>
+        </div>
+    </div>
+
+    <script src="scripts/app.js"></script>
+</body>
+</html>
